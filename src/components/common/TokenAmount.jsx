@@ -34,7 +34,7 @@ const TokenAmount = (props) => {
     });
 
     useEffect(() => {
-        fetchInfo(); 
+        fetchInfo(); // eslint-disable-next-line
     }, [props.address])
 
     return (

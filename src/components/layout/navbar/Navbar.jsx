@@ -7,6 +7,7 @@ import ConnectButton from './connect/ConnectButton';
 const navigation = [
   { name: 'Home', href: '/'},
   { name: 'Mint', href: '/mint'},
+  { name: 'Transfer', href: '/transfer'}
 ]
 
 function classNames(...classes) {

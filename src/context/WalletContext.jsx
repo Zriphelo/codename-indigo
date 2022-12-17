@@ -37,17 +37,19 @@ const ProviderWrapper = (props) => {
             const tProvider = new providers.Web3Provider(modalProvider)
             const tSigner = tProvider.getSigner()
 
-            setProvider(tProvider.provider);
+            setProvider(tProvider);
             setSigner(tSigner);
             setWalletAddress(await tSigner.getAddress())
             let network = await tProvider.getNetwork();
             // eslint-disable-next-line
             if (network.chainId == 5) setIsGoerli(true);
 
-            
             tProvider.provider.on("accountsChanged", (accounts) => {
               if(accounts.length <= 0) disconnect();
-              else setWalletAddress(accounts[0]);
+              else {
+                setWalletAddress(accounts[0]);
+                setSigner(tProvider.getSigner());
+              }
             });
             tProvider.provider.on("chainChanged", (chainId) => {
               // eslint-disable-next-line

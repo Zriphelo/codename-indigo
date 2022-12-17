@@ -41,6 +41,7 @@ const ProviderWrapper = (props) => {
             setSigner(tSigner);
             setWalletAddress(await tSigner.getAddress())
             let network = await tProvider.getNetwork();
+            
             // eslint-disable-next-line
             if (network.chainId == 5) setIsGoerli(true);
 
@@ -58,10 +59,6 @@ const ProviderWrapper = (props) => {
             tProvider.provider.on("disconnect", (error) => {
               disconnect();
             });
-            // });
-            // tProvider.provider.on("connect", (chainId) => {
-            //   console.log('connected on chain ', chainId);
-            // });
 
             setIsConnected(true);
 

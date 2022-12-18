@@ -4,6 +4,7 @@ import Layout from '../layout/Layout';
 
 import Mint from '../content/mint/Mint';
 import Home from '../content/home/Home';
+import Transfer from "../content/transfer/Transfer";
 import { useEffect } from "react";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="mint" element={<Mint/>}/>
+          <Route path="transfer" element ={<Transfer/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

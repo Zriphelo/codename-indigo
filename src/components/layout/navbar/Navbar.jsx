@@ -7,6 +7,7 @@ import ConnectButton from './connect/ConnectButton';
 const navigation = [
   { name: 'Home', href: '/'},
   { name: 'Mint', href: '/mint'},
+  { name: 'Transfer', href: '/transfer'}
 ]
 
 function classNames(...classes) {
@@ -16,10 +17,10 @@ function classNames(...classes) {
 const Navbar = () => {
 
   return (
-    <Disclosure as="nav" className="bg-indigo-800 mb-5 border-b-4 border-dashed">
+    <Disclosure as="nav" className="bg-indigo-800 border-b-2 mb-5 border-dashed">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-5 lg:py-0">
+          <div className="mx-auto max-w-7xl px-2 sm:px-6 py-1">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -51,11 +52,11 @@ const Navbar = () => {
                 </div>
               </div>
               {/* <UserMenu/> */}
-              <div className="lg:flex sm:block items-center">
-                <div className="flex justify-end items-center mx-2">
-                  <WalletInfo className="text-white"/>
+              <div className="hidden sm:flex items-center justify-end">
+                <div className="justify-end items-center mx-2">
+                  <WalletInfo/>
                 </div>
-                <div className="flex justify-end items-center mx-2">
+                <div className="justify-center">
                   <ConnectButton/>
                 </div>
               </div>
@@ -64,13 +65,17 @@ const Navbar = () => {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
+              <div className="flex items-center">
+                <ConnectButton className="mb-2"/>
+                <WalletInfo className="mx-2"/>
+              </div>
               {navigation.map((item) => (
                 <NavLink
                   key={item.name}
                   to={item.href}
                   className={({isActive}) => classNames(
-                    isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-black hover:bg-white',
-                    'block px-3 py-2 rounded-md text-base font-medium'
+                    isActive ? 'bg-gray-900' : 'text-gray-300 hover:bg-gray-200 hover:text-black hover:bg-white',
+                    'block px-3 py-2 mt-2 rounded-md text-base font-medium'
                   )}
                 >
                   {item.name}

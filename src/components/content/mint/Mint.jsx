@@ -1,45 +1,26 @@
 import { useState } from "react";
 import { Context as WalletContext } from "../../../context/WalletContext"
 import { useContext } from 'react';
-import { ethers } from "ethers"
 import blockSvg from "../../../assets/svg/block.svg"
 import Display from "../../common/Display"
-
-const TokenAmount = () => {
-
-    const { contract, signer } = useContext(WalletContext);
-
-    const [amountOwned, setAmountOwned] = useState(-1);
-
-    contract.on("Transfer", async (from, to, value, event) => {
-        if(to === await signer.getAddress() && from === '0x0000000000000000000000000000000000000000'){
-            console.log("Public mint from this account emitted");
-            fetchInfo();
-        }
-    });
-
-    const fetchInfo = async () => {
-        let amount = await contract.balanceOf(await signer.getAddress());
-        amount = ethers.utils.formatUnits(amount, 0)
-        setAmountOwned(amount);
-    }
-
-    fetchInfo(); 
-
-    return (
-        <div>
-            {amountOwned}
-        </div>
-    )
-}
+import TokenAmount from "../../common/TokenAmount";
+import { useEffect } from "react";
 
 const MintForm = () => {
 
     const { contract, signer } = useContext(WalletContext);
 
     const [amount, setAmount] = useState('');
-    const [minted, setMinted] = useState('')
+    const [minted, setMinted] = useState('');
     const [inputError, setInputError] = useState(false);
+    const [address, setAddress] = useState(undefined);
+
+    useEffect(() => {
+        async function fetch () {
+            setAddress(await signer.getAddress())
+        }
+        fetch()
+    }, [signer])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -53,8 +34,6 @@ const MintForm = () => {
         } else {
             setInputError(true);
         }
-
-        
     }
 
     const handleChange = (e) => {
@@ -71,7 +50,7 @@ const MintForm = () => {
     return (
         <div className="">
             <Display title="Indigo tokens owned">
-                <TokenAmount/>
+                <TokenAmount address={address}/>
             </Display>
             <Display title="Amount to mint">
                 <form onSubmit={handleSubmit}>

@@ -72,7 +72,7 @@ const TransferForm = () => {
             type="text"
             value={amount}
             onChange={handleChange}
-          />{" "}
+          />
           <br />
           <input
             className="m-2 p-1 px-4 rounded-full bg-blue-500 hover:bg-blue-700 text-white border-2 cursor-pointer"

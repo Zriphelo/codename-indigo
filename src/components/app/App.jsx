@@ -10,7 +10,8 @@ import { useEffect } from "react";
 const App = () => {
 
   useEffect(() => {
-    document.body.className = "bg-gradient-to-r from-purple-600/80 to-purple-600/80 via-indigo-600/80 text-slate-100"
+    document.body.className = "bg-gradient-to-r from-purple-600/80 to-purple-600/80 via-indigo-600/80"
+    // document.body.className = "bg-slate-100"
   })
   
   return (

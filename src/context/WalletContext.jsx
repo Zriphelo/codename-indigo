@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { providers } from "ethers";
-import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3Modal from "web3modal";
 import { ethers } from "ethers";
+
+import WalletConnectProvider from "@walletconnect/web3-provider";
+import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 
 const contractJson = require("../assets/abi/Indigo.json")
 
@@ -14,6 +16,13 @@ const providerOptions = {
     options: {
       infuraId: process.env.REACT_APP_INFURA_ID, // required
     },
+  },
+  coinbasewallet: {
+    package: CoinbaseWalletSDK, 
+    options: {
+      appName: "Indigo",
+      infuraId: process.env.REACT_APP_INFURA_ID
+    }
   }
 }
 const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS

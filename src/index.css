@@ -10,3 +10,7 @@ html, body {
     height: 100%;
     background: linear-gradient(120deg, #ff6842e3, indigo, #3d7bd7); */
 }
+
+input[type=text] {
+    resize: vertical;
+}

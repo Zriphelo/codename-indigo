@@ -48,13 +48,13 @@ const MintForm = () => {
     }
 
     return (
-        <div className="">
+        <div className="grid grid-cols-1">
             <Display title="Indigo tokens owned">
                 <TokenAmount address={address}/>
             </Display>
             <Display title="Amount to mint">
                 <form onSubmit={handleSubmit}>
-                    <input className="rounded-xl p-1 px-3 m-2 text-slate-900 bg-slate-100/40 border"
+                    <input className="rounded-xl p-1 px-3 my-2 text-slate-900 bg-slate-100/40 border w-full"
                         type="text" value={amount} onChange={handleChange} /> <br/>
                     <input className="m-2 p-1 px-4 rounded-full bg-blue-500 hover:bg-blue-700 text-white border-2 cursor-pointer"
                         type="submit" value="Mint" />

@@ -1,26 +1,29 @@
-import { Disclosure} from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Disclosure } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { NavLink } from "react-router-dom";
-import WalletInfo from './wallet/WalletInfo';
-import ConnectButton from './connect/ConnectButton';
+import WalletInfo from "./wallet/WalletInfo";
+import ConnectButton from "./connect/ConnectButton";
+import UserMenu from "./menu/UserMenu";
 
 const navigation = [
-  { name: 'Home', href: '/'},
-  { name: 'Mint', href: '/mint'},
-  { name: 'Transfer', href: '/transfer'}
-]
+  { name: "Home", href: "/" },
+  { name: "Mint", href: "/mint" },
+  { name: "Transfer", href: "/transfer" },
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 const Navbar = () => {
-
   return (
-    <Disclosure as="nav" className="bg-indigo-800 border-b-2 mb-5 border-dashed">
+    <Disclosure
+      as="nav"
+      className="bg-indigo-800 mb-5 border-dashed text-slate-100"
+    >
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 py-1">
+          <div className="mx-auto max-w-7xl px-2 sm:px-6">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -40,10 +43,14 @@ const Navbar = () => {
                       <NavLink
                         key={item.name}
                         to={item.href}
-                        className={({ isActive}) => classNames(
-                          isActive ? 'bg-gray-900 text-white' : 'hover:text-black hover:bg-slate-100',
-                          'px-3 py-2 rounded-md text-sm font-medium'
-                        )}
+                        className={({ isActive }) =>
+                          classNames(
+                            isActive
+                              ? "bg-gray-900 text-white"
+                              : "hover:text-black hover:bg-slate-100",
+                            "px-3 py-2 rounded-md text-sm font-medium"
+                          )
+                        }
                       >
                         {item.name}
                       </NavLink>
@@ -51,13 +58,15 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
-              {/* <UserMenu/> */}
               <div className="hidden sm:flex items-center justify-end">
                 <div className="justify-end items-center mx-2">
-                  <WalletInfo/>
+                  <WalletInfo />
+                </div>
+                <div className="">
+                  <UserMenu />
                 </div>
                 <div className="justify-center">
-                  <ConnectButton/>
+                  <ConnectButton />
                 </div>
               </div>
             </div>
@@ -66,17 +75,21 @@ const Navbar = () => {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
               <div className="flex items-center">
-                <ConnectButton className="mb-2"/>
-                <WalletInfo className="mx-2"/>
+                <ConnectButton className="mb-2" />
+                <WalletInfo className="mx-2" />
               </div>
               {navigation.map((item) => (
                 <NavLink
                   key={item.name}
                   to={item.href}
-                  className={({isActive}) => classNames(
-                    isActive ? 'bg-gray-900' : 'text-gray-300 hover:bg-gray-200 hover:text-black hover:bg-white',
-                    'block px-3 py-2 mt-2 rounded-md text-base font-medium'
-                  )}
+                  className={({ isActive }) =>
+                    classNames(
+                      isActive
+                        ? "bg-gray-900"
+                        : "text-gray-300 hover:bg-gray-200 hover:text-black hover:bg-white",
+                      "block px-3 py-2 mt-2 rounded-md text-base font-medium"
+                    )
+                  }
                 >
                   {item.name}
                 </NavLink>
@@ -86,7 +99,7 @@ const Navbar = () => {
         </>
       )}
     </Disclosure>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

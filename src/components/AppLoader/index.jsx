@@ -1,5 +1,5 @@
 import { ProviderWrapper as WalletProviderWrapper } from '../../context/WalletContext';
-import App from './App'
+import App from '../App'
 
 const AppLoader = () => {
     return (

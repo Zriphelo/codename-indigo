@@ -8,7 +8,7 @@ const TokenAmount = (props) => {
 
     const { contract } = useContext(WalletContext);
 
-    const [ amountOwned, setAmountOwned ] = useState(-1);
+    const [ amountOwned, setAmountOwned ] = useState(0);
 
     const fetchInfo = async () => {
         if(isEthAddress(props.address)){
